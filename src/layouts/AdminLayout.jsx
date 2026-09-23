@@ -5,12 +5,13 @@ import {
   useNavigate,
 } from "react-router-dom";
 
-import { useAuth } from "../hooks/AuthContext";
+import { useAuth } from "../hooks/authContext";
 
 function AdminLayout() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [aboutOpen, setAboutOpen] = useState(true);
-
+  const [contactOpen, setContactOpen] = useState(true);
+  const [footerOpen, setFooterOpen] = useState(true);
   const navigate = useNavigate();
 
   const { user, logout } = useAuth();
@@ -385,7 +386,7 @@ function AdminLayout() {
           </div>
 
           {/* Communication */}
-          <div className="mb-6">
+          {/* <div className="mb-6">
             <p className="mb-2 px-3 text-xs font-semibold uppercase tracking-wider text-gray-400">
               Communication
             </p>
@@ -416,7 +417,131 @@ function AdminLayout() {
                 Soon
               </span>
             </button>
-          </div>
+          </div> */}
+
+
+
+{/* Communication */}
+<div className="mb-6">
+  <p className="mb-2 px-3 text-xs font-semibold uppercase tracking-wider text-gray-400">
+    Communication
+  </p>
+
+  {/* Contact  */}
+  <button
+    type="button"
+    onClick={() => setContactOpen(!contactOpen)}
+    className="flex w-full items-center justify-between rounded-lg px-3 py-2.5 text-sm font-medium text-gray-600 transition hover:bg-gray-100 hover:text-gray-900"
+  >
+    <span className="flex items-center">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        strokeWidth="1.5"
+        stroke="currentColor"
+        className="mr-3 h-5 w-5 shrink-0"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0l-7.5-4.615A2.25 2.25 0 0 1 2.25 6.993V6.75"
+        />
+      </svg>
+      Contact
+    </span>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      strokeWidth="1.5"
+      stroke="currentColor"
+      className={`h-4 w-4 transition-transform ${contactOpen ? "rotate-180" : ""}`}
+    >
+      <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+    </svg>
+  </button>
+
+  {contactOpen && (
+    <div className="mt-1 ml-8 space-y-1 border-l border-gray-200 pl-3">
+      <NavLink to="/cms/contact/main-office" className={submenuLinkClass} onClick={closeSidebar}>
+        Main Office
+      </NavLink>
+      <NavLink to="/cms/contact/departments" className={submenuLinkClass} onClick={closeSidebar}>
+        Departments
+      </NavLink>
+      <NavLink to="/cms/contact/quick-cards" className={submenuLinkClass} onClick={closeSidebar}>
+        Quick Cards
+      </NavLink>
+      <NavLink to="/cms/contact/campus-address" className={submenuLinkClass} onClick={closeSidebar}>
+        Campus Address
+      </NavLink>
+      <NavLink to="/cms/contact/office-hours" className={submenuLinkClass} onClick={closeSidebar}>
+        Office Hours
+      </NavLink>
+      <NavLink to="/cms/contact/submissions" className={submenuLinkClass} onClick={closeSidebar}>
+        Submissions
+      </NavLink>
+    </div>
+  )}
+</div>
+
+{/* Footer  */}
+<div className="mb-6">
+  <p className="mb-2 px-3 text-xs font-semibold uppercase tracking-wider text-gray-400">
+    Footer
+  </p>
+
+  <button
+    type="button"
+    onClick={() => setFooterOpen(!footerOpen)}
+    className="flex w-full items-center justify-between rounded-lg px-3 py-2.5 text-sm font-medium text-gray-600 transition hover:bg-gray-100 hover:text-gray-900"
+  >
+    <span className="flex items-center">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        strokeWidth="1.5"
+        stroke="currentColor"
+        className="mr-3 h-5 w-5 shrink-0"
+      >
+        <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+      </svg>
+      Footer
+    </span>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      strokeWidth="1.5"
+      stroke="currentColor"
+      className={`h-4 w-4 transition-transform ${footerOpen ? "rotate-180" : ""}`}
+    >
+      <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+    </svg>
+  </button>
+
+  {footerOpen && (
+    <div className="mt-1 ml-8 space-y-1 border-l border-gray-200 pl-3">
+      <NavLink to="/cms/footer/navigation" className={submenuLinkClass} onClick={closeSidebar}>
+        Navigation
+      </NavLink>
+      <NavLink to="/cms/footer/social-links" className={submenuLinkClass} onClick={closeSidebar}>
+        Social Links
+      </NavLink>
+      <NavLink to="/cms/footer/contact-info" className={submenuLinkClass} onClick={closeSidebar}>
+        Contact Info
+      </NavLink>
+    </div>
+  )}
+</div>
+
+
+
+
+
+
 
           {/* System */}
           <div>
